@@ -1,9 +1,11 @@
-## 目录
+# 操作数据,遥控视图!!!
 
+## 目录
+   
    中文官方文档[传送门](https://angular.cn/docs)
    
    - <a href="#0">安装</a>
-   - <a href="#1"></a>
+   - <a href="#1">基础</a>
    - <a href="#2"></a>
    
    
@@ -11,5 +13,5 @@
  
    `npm i -g @angular/cli` 
     
- ## <a name="1"></a>
+ ## <a name="1">基础</a>
  ## <a name="2"></a>
