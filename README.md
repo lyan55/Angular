@@ -9,7 +9,7 @@
    
  ## <a name="0"></a> 
  
-    `npm i -g @angular/cli` 
+  `npm i -g @angular/cli` 
     
  ## <a name="1"></a>
  ## <a name="2"></a>
