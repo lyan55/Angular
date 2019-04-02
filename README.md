@@ -7,9 +7,9 @@
    - <a href="#2"></a>
    
    
- ## <a name="0"></a> 
+ ## <a name="0">安装</a> 
  
-  `npm i -g @angular/cli` 
+   `npm i -g @angular/cli` 
     
  ## <a name="1"></a>
  ## <a name="2"></a>
