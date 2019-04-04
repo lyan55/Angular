@@ -181,13 +181,15 @@
           canActivate:[MyGuardService]
         }
      ]
-  ```
+  ```   
+  - 路由的嵌套  
+
 
 ## <a name="4">网络请求(HttpClientModule,HttpClient)</a>  
   步骤1: app.module.ts下引入HttpClientModule:  
   ```javascript
   import {HttpClientModule} from '@angular/common/http'  
-  imports:[HttpClientModule]
+  imports:[HttpClientModule]      //使 HttpClient 在应用中随处可用
   ```  
 
    步骤2: 在组件中调用HttpClient发起请求  
