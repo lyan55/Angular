@@ -158,7 +158,33 @@
     })
   ```
 
-  - 路由守卫  
+  - 路由守卫(canActivate)
+  主要思路: 判断该页面(比如后台管理页面)是否显示  
+  操作步骤:  
+  1. 创建一个服务类,封装判断处理逻辑方法,数据  
+  `ng g service my-guard`
+  2. 封装判断处理逻辑方法,数据  
+  
+  ```javascript
+  import {CanActivate} from '@angular/router'
+      export class MyGuardService implements CanActivate{
+    canActivate(){
+      //在此来做一些功能处理 来决定是否可以访问你要保护的页面
+      return true/false
+    }
+  }
+  ```  
+  3. 配置路由地址页面(my-module.ts)--皮卡丘,去守卫你保护的页面吧  
+  ```javascript  
+      import {MyGuardService} from '../my-guard.service'
+     [
+        {
+          path:'admin',
+          component:AdminComponent,
+          canActivate:[MyGuardService]
+        }
+     ]
+  ```
 
 ## <a name="4">网络请求</a>  
    `import {HttpClient} from '@angular/common/http'`   
