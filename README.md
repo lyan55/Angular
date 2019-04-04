@@ -7,7 +7,7 @@
    - <a href="#1">基础语法</a>
    - <a href="#2">组件传值</a>
    - <a href="#3">路由</a>
-   - <a href="#4">HTTP</a>
+   - <a href="#4">网络请求</a>
    - <a href="#5">UI组件库</a>
    
    
@@ -73,6 +73,7 @@
   `import {Output,EventEmitter} from '@angular/core' //子--》父`
 
  ## <a name="3">路由</a>  
+  `import { Router } from "@angular/router"`  
   路由:  处理url与组件的关系  
   - 路由配置  
   导入router模块:  
@@ -95,7 +96,7 @@
   - 路由导航  
   - 路由守卫
 
-## <a name="4">HTTP</a>  
+## <a name="4">网络请求</a>  
    [传送门](https://angular.cn/tutorial/toh-pt6)
 
 ## <a name="5">UI组件库</a> 
