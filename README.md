@@ -14,16 +14,16 @@
  ## <a name="0">搭建开发环境</a> 
  
   ```javascript  
-  npm install -g @angular/cli
+  npm install -g @angular/cli  //安装anglugar命令行界面
   ng new my-app
   cd my-app
-  ng serve --open
+  ng serve --open              //启动服务
   ```
     
  ## <a name="1">基础语法</a>  
   - 组件的创建  
       `ng g component demo01`  
-      `<app-demo01></app-demo01>`   
+      `<app-demo01></app-demo01>`  
   - 双花括号  
       `<any>{{expression}}</any>`  
   - 指令  
