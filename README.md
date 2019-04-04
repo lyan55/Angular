@@ -28,8 +28,23 @@
 
  ## <a name="3">路由</a>  
   路由:  处理url与组件的关系  
-  - 路由配置
+  - 路由配置  
+  导入router模块:  
+    `import { ActivatedRoute } from "@angular/router"`  
+    实例化:  
+    `constructor(private myRoutr: Router) { }
+`  
+调用:  
+    `this.myRoutr.navigateByUrl("routerPath")`  
   - 路由传参  
+    1.静态传参  
+      1.1  `routerLink="/path/10"`  
+      1.2  需要配置{ ActivatedRoute }模块  
+      `import { ActivatedRoute } from "@angular/router"`  
+      `this.myRoute.params.subscribe`  
+    2.动态传参  
+      2.1  `routerLink="/path/{{opts}}"`  
+      2.2  `[routerLink]="'/path/'+opts"`  
   - 路由跳转  
   - 路由导航  
   - 路由守卫
