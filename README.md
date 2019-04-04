@@ -5,13 +5,15 @@
    中文官方文档[传送门](https://angular.cn/docs)
    
    - <a href="#0">安装</a>
-   - <a href="#1">基础</a>
-   - <a href="#2">test</a>
+   - <a href="#1">基础语法</a>
+   - <a href="#2">组件传值</a>
+   - <a href="#3">组件跳转</a>
    
    
  ## <a name="0">安装</a> 
  
    `npm i -g @angular/cli` 
     
- ## <a name="1">基础</a>
- ## <a name="2"></a>
+ ## <a name="1">基础语法</a>
+ ## <a name="2">组件传值</a>
+ ## <a name="3">组件跳转</a>
