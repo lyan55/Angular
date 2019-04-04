@@ -186,7 +186,22 @@
   ```
 
 ## <a name="4">网络请求</a>  
-   `import {HttpClient} from '@angular/common/http'`   
+  import { HttpClientModule,HttpClient } from '@angular/common/http'
+  步骤1: app.module.ts下引入HttpClientModule:  
+  ```javascript
+  import {HttpClientModule} from '@angular/common/http'  
+  imports:[HttpClientModule]
+  ```  
+
+   步骤2: 在组件中调用HttpClient发起请求  
+   ```javascript
+    import {HttpClient} from '@angular/common/http'
+    constructor(private myClient:HttpClient){}
+    this.myClient.get/post().subscribe((result)=>{
+      //result就是从服务器端请求到的数据
+      //将result中数据保存，到视图中显示或者在组件类中做处理。。。
+    })
+  ```  
    [传送门](https://angular.cn/tutorial/toh-pt6)
 
 ## <a name="5">UI组件库</a> 
