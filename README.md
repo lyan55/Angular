@@ -34,11 +34,12 @@
       <any *ngFor="let tmp of myList;let myIndex=index"></any>
       ```  
       2. 条件--switch  
+      
       ```javascript  
       <div [ngSwitch]="expression">
         <p *ngSwitchCase="情况1"></p>
         <p *ngSwitchCase="情况2"></p>
-        <p *ngSwitchCase="情况3”></p>
+        <p *ngSwitchCase="情况3"></p>
         <p *ngSwitchDefault></p>
       </div>
       ```  
