@@ -67,6 +67,17 @@
       5. percent  
       6. currency  
   - 服务  
+    本质: 就是一个类,在里面封装方法,数据  
+    作用: 将不同组件要共享的数据和方法抽象出来  
+    创建服务:  
+    `ng g service heart-beat`  
+    实现服务:  定义需要的数据和方法  
+    调用服务:  组件是服务最大消费者  
+    ```javascript 
+    import { HeartBeatService } from "/path"          //引入服务类
+    constructor(private myService: HeartBeatService)  //实例化HeartBeatService类
+    this.myService.thods()                            //调用实例类对象的方法
+    ```
 
  ## <a name="2">组件传值(通信)</a>  
   `import {FormsModule} from '@angular/forms`  
