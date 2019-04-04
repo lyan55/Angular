@@ -78,8 +78,18 @@
   this.myTitle(.ts)/{{ myTitle }}(.html)  //调用值
   ```  
   
-  - 子传父--通过事件触发传值:  
-  `import {Output,EventEmitter} from '@angular/core'`
+  - 子传父--通过绑定、触发事件传值:  
+  事件绑定:   
+  html:  
+  `<son (myEvent)="handleEvent($event)"></son>`  
+  .ts  
+  `handleEvent(opts) {opts}`  
+  事件触发:  
+  ```javascript  
+  import {Output,EventEmitter} from '@angular/core'   //导入模块  
+  @Output() myEvent = new EventEmitter()              //抛出事件  
+  this.myEvent.emit(opts)                             //发送参数  
+  ```
 
  ## <a name="3">路由</a>  
   `import { Router } from "@angular/router"`  
