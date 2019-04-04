@@ -79,8 +79,7 @@
     this.myService.thods()                            //调用实例类对象的方法
     ```
 
- ## <a name="2">组件传值(通信)</a>  
-  `import { Input,Output,EventEmitter } from '@angular/core' `   
+ ## <a name="2">组件传值(Input,Output,EventEmitter)</a>  
   ### 组件内部通信 
   - 父传子--通过属性传值:  
   传:  `<son myTitle="123"></son>`  
@@ -104,8 +103,7 @@
   this.myEvent.emit(opts)                             //发送参数  
   ```
 
- ## <a name="3">路由</a>  
-  `import { Router,ActivatedRoute,canActivate } from "@angular/router"`  
+ ## <a name="3">路由(Router,ActivatedRoute,canActivate)</a>  
   路由:  处理url与组件的关系  
   - 基本用法    
     ```javascript  
@@ -185,8 +183,7 @@
      ]
   ```
 
-## <a name="4">网络请求</a>  
-  import { HttpClientModule,HttpClient } from '@angular/common/http'
+## <a name="4">网络请求(HttpClientModule,HttpClient)</a>  
   步骤1: app.module.ts下引入HttpClientModule:  
   ```javascript
   import {HttpClientModule} from '@angular/common/http'  
