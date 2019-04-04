@@ -1,7 +1,7 @@
 
 ## 目录
    
-   中文官方文档[传送门](https://angular.cn/docs)
+   官方文档[传送门](https://angular.cn/docs)
    
    - <a href="#0">安装</a>
    - <a href="#1">基础语法</a>
@@ -108,26 +108,57 @@
  ## <a name="3">路由</a>  
   `import { Router } from "@angular/router"`  
   路由:  处理url与组件的关系  
-  - 路由配置  
-  导入router模块:  
-    `import { Router } from "@angular/router"`  
-    实例化:  
-    `constructor(private myRoutr: Router) { }
-`  
-调用:  
-    `this.myRoutr.navigateByUrl("routerPath")`  
-  - 路由传参  
-    1.静态传参  
-      1.1   `routerLink="/path/10"`  
-      1.2   需要配置{ ActivatedRoute }模块  
-      `import { ActivatedRoute } from "@angular/router"`  
-      `this.myRoute.params.subscribe`  
-    2.动态传参  
-      2.1   `routerLink="/path/{{opts}}"`  
-      2.2   `[routerLink]="'/path/'+opts"`  
-  - 路由跳转  
-  - 路由导航  
-  - 路由守卫
+  - 基本用法    
+    ```javascript  
+      1.完成一个自定义模块(包含路由配置)的创建和调用
+        ng g module my-module --routing
+        app.module.ts/引入/imports
+
+      2.准备一个容器
+        <router-outlet></router-outlet>
+        forChild-->forRoot
+      3.创建组件
+        Login/Register/Cart...
+          ng g component demo13-login
+          ng g component demo13-register
+      4.配置路由词典
+          {path:'',component:**}
+          引入组件
+          各自指定url地址
+      ```  
+  - 跳转与传参  
+    #### 跳转(Router):  
+    编程方式:  
+   ```javascript  
+     import {Router} from '@angular/router'    //引入Router模块
+	 constructor(private myRouter:Router){}    //实例化Router模块
+	 this.myRouter.navigateByUrl("/path")      //调用该类对象navigateByUrl()方法跳转
+  ```  
+  标签方式:  routerLink  
+    `<button routerLink="/register">注册</button>`   
+  #### 传参(ActivatedRoute):   
+  1.配置接收方的路由地址  
+       `detail --> detail/:id`  
+  2.1  静态传参  
+  ```javascript
+  this.myRouter.navigateByUrl('detail/3')  //编程方式
+  <any routerLink="detail/3"></any>        //标签方式
+  ```
+  2.2  动态传参  
+  ```javascript
+  routerLink="/path/{{opts}}"       //推荐
+  [routerLink]="'/path/'+opts"      //使用绑定属性指令
+  ```
+  3. 接收  
+  ```javascript
+    import {ActivatedRoute} from '@angular/router'    //导入
+    constructor(private myRoute:ActivatedRoute){}     //ActivatedRoute实例化
+    this.myRoute.params.subscribe((result)=>{         //调用类对象属性,方法.回调获取传递过来的参数
+      return result.id       //返回参数id的值,路由地址设置detail/:id 和 接收参数result.id 两个属性名字要保持一致
+    })
+  ```
+
+  - 路由守卫  
 
 ## <a name="4">网络请求</a>  
    `import {HttpClient} from '@angular/common/http'`   
