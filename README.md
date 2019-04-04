@@ -8,6 +8,8 @@
    - <a href="#1">基础语法</a>
    - <a href="#2">组件传值</a>
    - <a href="#3">组件跳转</a>
+   - <a href="#4">HTTP</a>
+   - <a href="#5">常用模块</a>
    
    
  ## <a name="0">安装</a> 
@@ -31,3 +33,8 @@
   - 路由导航  
   - 路由守卫
 
+## <a name="4">HTTP</a>  
+   [传送门](https://angular.cn/tutorial/toh-pt6)
+   
+## <a name="5">常用模块</a> 
+  - 
