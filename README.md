@@ -80,8 +80,7 @@
     ```
 
  ## <a name="2">组件传值(通信)</a>  
-  `import {FormsModule} from '@angular/forms`  
-  `import {Input} from '@angular/core' `
+  `import { Input,Output,EventEmitter } from '@angular/core' `   
   ### 组件内部通信 
   - 父传子--通过属性传值:  
   传:  `<son myTitle="123"></son>`  
@@ -106,7 +105,7 @@
   ```
 
  ## <a name="3">路由</a>  
-  `import { Router } from "@angular/router"`  
+  `import { Router,ActivatedRoute,canActivate } from "@angular/router"`  
   路由:  处理url与组件的关系  
   - 基本用法    
     ```javascript  
