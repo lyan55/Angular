@@ -8,7 +8,7 @@
    - <a href="#2">组件传值</a>
    - <a href="#3">路由</a>
    - <a href="#4">HTTP</a>
-   - <a href="#5">常用模块</a>
+   - <a href="#5">UI组件库</a>
    
    
  ## <a name="0">搭建开发环境</a> 
@@ -65,15 +65,18 @@
   6. currency  
   - 服务  
 
- ## <a name="2">组件传值</a>  
+ ## <a name="2">组件传值(通信)</a>  
+  `import {FormsModule} from '@angular/forms`  
   - 父传子  
+  `import {Input} from '@angular/core' //父-》子`  
   - 子传父  
+  `import {Output,EventEmitter} from '@angular/core' //子--》父`
 
  ## <a name="3">路由</a>  
   路由:  处理url与组件的关系  
   - 路由配置  
   导入router模块:  
-    `import { ActivatedRoute } from "@angular/router"`  
+    `import { Router } from "@angular/router"`  
     实例化:  
     `constructor(private myRoutr: Router) { }
 `  
@@ -95,5 +98,5 @@
 ## <a name="4">HTTP</a>  
    [传送门](https://angular.cn/tutorial/toh-pt6)
 
-## <a name="5">常用模块</a> 
+## <a name="5">UI组件库</a> 
   - 
