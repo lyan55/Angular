@@ -44,25 +44,28 @@
       </div>
       ```  
       2.1 条件--if  
+
       `<any *ngIf="expression"></any>`  
+      
       3.绑定  
-          3.1  属性绑定  
-          `<any [someProp]="expression"><any>`  
-          3.2  事件绑定  
-          `<button (click)="handleClick()"></button>`  
-          3.3  双向数据绑定  
-          配置:  
-          ```javascript
-          import {FormsModule} from '@angular/forms' import {FormsModule} from '@angular/forms' 
-          ```  
-          `[(ngModel)]="value"`  
-  - 管道  
-  1. number  
-  2. slice  
-  3. json  
-  4. uppercase/lowercase  
-  5. percent  
-  6. currency  
+        3.1  属性绑定  
+        `<any [someProp]="expression"><any>`  
+        3.2  事件绑定  
+        `<button (click)="handleClick()"></button>`  
+        3.3  双向数据绑定  
+        配置:  
+        ```javascript
+        import {FormsModule} from '@angular/forms' import {FormsModule} from '@angular/forms' 
+        ```  
+        `[(ngModel)]="value"`  
+  - 管道(pipe)  
+    官方:  
+      1. number  
+      2. slice  
+      3. json  
+      4. uppercase/lowercase  
+      5. percent  
+      6. currency  
   - 服务  
 
  ## <a name="2">组件传值(通信)</a>  
