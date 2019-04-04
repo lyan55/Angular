@@ -11,14 +11,56 @@
    - <a href="#5">常用模块</a>
    
    
- ## <a name="0">安装</a> 
+ ## <a name="0">搭建开发环境</a> 
  
-   `npm i -g @angular/cli` 
+  ```javascript  
+  npm install -g @angular/cli
+  ng new my-app
+  cd my-app
+  ng serve --open
+  ```
     
  ## <a name="1">基础语法</a>  
+  - 组件的创建  
+      `ng g component demo01`  
+      `<app-demo01></app-demo01>`   
   - 双花括号  
+      `<any>{{expression}}</any>`  
   - 指令  
+      1. 循环 
+      ```javascript
+      <any *ngFor="let tmp of myList"></any>
+      <any *ngFor="let tmp of myList;let myIndex=index"></any>
+      ```  
+      2. 条件--switch  
+      ```javascript  
+      <div [ngSwitch]="expression">
+        <p *ngSwitchCase="情况1"></p>
+        <p *ngSwitchCase="情况2"></p>
+        <p *ngSwitchCase="情况3”></p>
+        <p *ngSwitchDefault></p>
+      </div>
+      ```  
+      2.1 条件--if  
+      `<any *ngIf="expression"></any>`  
+      3.绑定  
+          3.1  属性绑定  
+          `<any [someProp]="expression"><any>`  
+          3.2  事件绑定  
+          `<button (click)="handleClick()"></button>`  
+          3.3  双向数据绑定  
+          配置:  
+          ```javascript
+          import {FormsModule} from '@angular/forms' import {FormsModule} from '@angular/forms' 
+          ```  
+          `[(ngModel)]="value"`  
   - 管道  
+  1. number  
+  2. slice  
+  3. json  
+  4. uppercase/lowercase  
+  5. percent  
+  6. currency  
   - 服务  
 
  ## <a name="2">组件传值</a>  
@@ -37,13 +79,13 @@
     `this.myRoutr.navigateByUrl("routerPath")`  
   - 路由传参  
     1.静态传参  
-      1.1  `routerLink="/path/10"`  
-      1.2  需要配置{ ActivatedRoute }模块  
+      1.1   `routerLink="/path/10"`  
+      1.2   需要配置{ ActivatedRoute }模块  
       `import { ActivatedRoute } from "@angular/router"`  
       `this.myRoute.params.subscribe`  
     2.动态传参  
-      2.1  `routerLink="/path/{{opts}}"`  
-      2.2  `[routerLink]="'/path/'+opts"`  
+      2.1   `routerLink="/path/{{opts}}"`  
+      2.2   `[routerLink]="'/path/'+opts"`  
   - 路由跳转  
   - 路由导航  
   - 路由守卫
