@@ -67,10 +67,19 @@
 
  ## <a name="2">组件传值(通信)</a>  
   `import {FormsModule} from '@angular/forms`  
-  - 父传子  
-  `import {Input} from '@angular/core' //父-》子`  
-  - 子传父  
-  `import {Output,EventEmitter} from '@angular/core' //子--》父`
+  `import {Input} from '@angular/core' `
+  ### 组件内部通信 
+  - 父传子--通过属性传值:  
+  传:  `<son myTitle="123"></son>`  
+  收:  
+  ```javascript
+  import {Input} from '@angular/core'     //导入模块
+  @input() myTitle = ""                   //保存变量值
+  this.myTitle(.ts)/{{ myTitle }}(.html)  //调用值
+  ```  
+  
+  - 子传父--通过事件触发传值:  
+  `import {Output,EventEmitter} from '@angular/core'`
 
  ## <a name="3">路由</a>  
   `import { Router } from "@angular/router"`  
@@ -97,6 +106,7 @@
   - 路由守卫
 
 ## <a name="4">网络请求</a>  
+   `import {HttpClient} from '@angular/common/http'`   
    [传送门](https://angular.cn/tutorial/toh-pt6)
 
 ## <a name="5">UI组件库</a> 
