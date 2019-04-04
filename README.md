@@ -53,11 +53,11 @@
         3.2  事件绑定  
         `<button (click)="handleClick()"></button>`  
         3.3  双向数据绑定  
-        配置:  
-        ```javascript
-        import {FormsModule} from '@angular/forms' import {FormsModule} from '@angular/forms' 
-        ```  
-        `[(ngModel)]="value"`  
+        配置:   
+       ```javascript   
+        import {FormsModule} from '@angular/forms'  import {FormsModule} from '@angular/forms'  
+      ```  
+      `[(ngModel)]="value"`  
   - 管道(pipe)  
     官方:  
       1. number  
