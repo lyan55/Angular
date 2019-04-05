@@ -5,10 +5,9 @@
    
    - <a href="#0">安装</a>
    - <a href="#1">基础语法</a>
-   - <a href="#2">组件传值(通信)</a>
+   - <a href="#2">通信</a>
    - <a href="#3">路由</a>
-   - <a href="#4">网络请求</a>
-   - <a href="#5">UI组件库</a>
+   - <a href="#4">UI组件库</a>
    
    
  ## <a name="0">搭建开发环境</a> 
@@ -79,29 +78,46 @@
     this.myService.thods()                            //调用实例类对象的方法
     ```
 
- ## <a name="2">组件传值(Input,Output,EventEmitter)</a>  
-  ### 组件内部通信 
-  - 父传子--通过属性传值:  
-  传:  `<son myTitle="123"></son>`  
-  收:  
+ ## <a name="2">通信(Input,Output,EventEmitter)</a>  
+### 组件间通信 
+- 父传子--通过属性传值:  
+传:  `<son myTitle="123"></son>`  
+收:  
+```javascript
+import {Input} from '@angular/core'     //导入模块
+@input() myTitle = ""                   //保存变量值
+this.myTitle(.ts)/{{ myTitle }}(.html)  //调用值
+```  
+
+- 子传父--通过绑定、触发事件传值:  
+事件绑定:   
+html:  
+`<son (myEvent)="handleEvent($event)"></son>`  
+.ts  
+`handleEvent(opts) {opts}`  
+事件触发:  
+```javascript  
+import {Output,EventEmitter} from '@angular/core'   //导入模块  
+@Output() myEvent = new EventEmitter()              //抛出事件  
+this.myEvent.emit(opts)                             //发送参数  
+```  
+### 与远程服务器端的通信(HttpClientModule,HttpClient)  
+  步骤1: app.module.ts下引入HttpClientModule:  
   ```javascript
-  import {Input} from '@angular/core'     //导入模块
-  @input() myTitle = ""                   //保存变量值
-  this.myTitle(.ts)/{{ myTitle }}(.html)  //调用值
+  import {HttpClientModule} from '@angular/common/http'  
+  imports:[HttpClientModule]      //使 HttpClient 在应用中随处可用
   ```  
-  
-  - 子传父--通过绑定、触发事件传值:  
-  事件绑定:   
-  html:  
-  `<son (myEvent)="handleEvent($event)"></son>`  
-  .ts  
-  `handleEvent(opts) {opts}`  
-  事件触发:  
-  ```javascript  
-  import {Output,EventEmitter} from '@angular/core'   //导入模块  
-  @Output() myEvent = new EventEmitter()              //抛出事件  
-  this.myEvent.emit(opts)                             //发送参数  
-  ```
+
+   步骤2: 在组件中调用HttpClient发起请求  
+   ```javascript
+    import {HttpClient} from '@angular/common/http'
+    constructor(private myClient:HttpClient){}
+    this.myClient.get/post().subscribe((result)=>{
+      //result就是从服务器端请求到的数据
+      //将result中数据保存，到视图中显示或者在组件类中做处理。。。
+    })
+  ```  
+   HTTP[传送门](https://angular.cn/tutorial/toh-pt6)
 
  ## <a name="3">路由(Router,ActivatedRoute,canActivate)</a>  
   路由:  处理url与组件的关系  
@@ -185,23 +201,5 @@
   - 路由的嵌套  
 
 
-## <a name="4">网络请求(HttpClientModule,HttpClient)</a>  
-  步骤1: app.module.ts下引入HttpClientModule:  
-  ```javascript
-  import {HttpClientModule} from '@angular/common/http'  
-  imports:[HttpClientModule]      //使 HttpClient 在应用中随处可用
-  ```  
-
-   步骤2: 在组件中调用HttpClient发起请求  
-   ```javascript
-    import {HttpClient} from '@angular/common/http'
-    constructor(private myClient:HttpClient){}
-    this.myClient.get/post().subscribe((result)=>{
-      //result就是从服务器端请求到的数据
-      //将result中数据保存，到视图中显示或者在组件类中做处理。。。
-    })
-  ```  
-   [传送门](https://angular.cn/tutorial/toh-pt6)
-
-## <a name="5">UI组件库</a> 
+## <a name="4">UI组件库</a> 
   - 
