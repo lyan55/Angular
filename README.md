@@ -202,4 +202,28 @@ this.myEvent.emit(opts)                             //发送参数
 
 
 ## <a name="4">UI组件库</a> 
-  - 
+### ionic(移动端)  
+官方文档[传送门](https://ionicframework.com/docs/components)   
+ionic特点如下:  
+
+1.ionic 基于Angular语法，简单易学。  
+2.ionic 是一个轻量级框架。  
+3.ionic 完美的融合下一代移动框架，支持Angularjs性，MVC   ，代码易维护。  
+4.ionic 提供了漂亮的设计，通过SASS构建应用程序，供了很多   UI 组件来帮助开发者开发强大的应用。  
+5.ionic 专注原生，让你看不出混合应用和原生的区别  
+6.ionic 提供了强大的命令行工具。  
+7.ionic 性能优越，运行速度快。  
+
+常用组件如下:  
+1.sheet  
+2.alert  
+3.button  
+4.card  
+5.content  
+6.grid  
+7.infinite scroll  
+8.input  
+9.slides  
+10.toast  
+
+
