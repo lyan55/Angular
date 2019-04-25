@@ -20,63 +20,69 @@
   ```
     
  ## <a name="1">基础语法</a>  
-  - 组件的创建  
-      `ng g component demo01`  
-      `<app-demo01></app-demo01>`  
-  - 双花括号  
-      `<any>{{expression}}</any>`  
-  - 指令  
-  
-      1. 循环 
-      ```javascript
-      <any *ngFor="let tmp of myList"></any>
-      <any *ngFor="let tmp of myList;let myIndex=index"></any>
-      ```  
-      2. 条件--switch  
-      
-      ```javascript  
-      <div [ngSwitch]="expression">
-        <p *ngSwitchCase="情况1"></p>
-        <p *ngSwitchCase="情况2"></p>
-        <p *ngSwitchCase="情况3"></p>
-        <p *ngSwitchDefault></p>
-      </div>
-      ```  
-      2.1 条件--if  
+- 组件的创建  
+  `ng g component demo01`  
+  `<app-demo01></app-demo01>`  
+- 双花括号  
+  `<any>{{expression}}</any>`  
+- 指令  
 
-      `<any *ngIf="expression"></any>`  
-      
-      3.绑定  
-        3.1  属性绑定  
-        `<any [someProp]="expression"><any>`  
-        3.2  事件绑定  
-        `<button (click)="handleClick()"></button>`  
-        3.3  双向数据绑定  
-        配置:   
-       ```javascript   
-        import {FormsModule} from '@angular/forms'  import {FormsModule} from '@angular/forms'  
-      ```  
-      `[(ngModel)]="value"`  
-  - 管道(pipe)  
-    官方:  
-      1. number  
-      2. slice  
-      3. json  
-      4. uppercase/lowercase  
-      5. percent  
-      6. currency  
-  - 服务  
-    本质: 就是一个类,在里面封装方法,数据  
-    作用: 将不同组件要共享的数据和方法抽象出来  
-    创建服务:  
-    `ng g service heart-beat`  
-    实现服务:  定义需要的数据和方法  
-    调用服务:  组件是服务最大消费者  
-    ```javascript 
-    import { HeartBeatService } from "/path"          //引入服务类
-    constructor(private myService: HeartBeatService)  //实例化HeartBeatService类
-    this.myService.thods()                            //调用实例类对象的方法
-    ```
+  1. 循环 
+  ```javascript
+  <any *ngFor="let tmp of myList"></any>
+  <any *ngFor="let tmp of myList;let myIndex=index"></any>
+  ```  
+  2. 条件--switch  
+  
+  ```javascript  
+  <div [ngSwitch]="expression">
+    <p *ngSwitchCase="情况1"></p>
+    <p *ngSwitchCase="情况2"></p>
+    <p *ngSwitchCase="情况3"></p>
+    <p *ngSwitchDefault></p>
+  </div>
+  ```  
+  2.1 条件--if  
+
+  `<any *ngIf="expression"></any>`  
+  
+3.绑定  
+  3.1  属性绑定  
+  `<any [someProp]="expression"><any>`  
+  3.2  事件绑定  
+  `<button (click)="handleClick()"></button>`  
+  3.3  双向数据绑定  
+  配置:   
+```javascript   
+/*src/app/app.module.ts*/
+import {FormsModule} from '@angular/forms'
+@NgModule({
+  imports:[FormsModule]
+})  
+```  
+调用(*.component.html):  
+`[(ngModel)]="value"`  
+
+- 管道(pipe)  
+官方:  
+  1. number  
+  2. slice  
+  3. json  
+  4. uppercase/lowercase  
+  5. percent  
+  6. currency  
+- 服务  
+本质: 就是一个类,在里面封装方法,数据  
+作用: 将不同组件要共享的数据和方法抽象出来  
+创建服务:  
+`ng g service heart-beat`  
+实现服务:  定义需要的数据和方法  
+调用服务:  组件是服务最大消费者  
+```javascript 
+import { HeartBeatService } from "/path"          //引入服务类
+constructor(private myService: HeartBeatService)  //实例化HeartBeatService类
+this.myService.thods()                            //调用实例类对象的方法
+```
 
  ## <a name="2">通信(Input,Output,EventEmitter)</a>  
 ### 组件间通信 
@@ -101,7 +107,7 @@ import {Output,EventEmitter} from '@angular/core'   //导入模块
 @Output() myEvent = new EventEmitter()              //抛出事件  
 this.myEvent.emit(opts)                             //发送参数  
 ```  
-### 与远程服务器端的通信(HttpClientModule,HttpClient)  
+### 与远程服务器端的通信或网络通信(HttpClientModule,HttpClient)  
   步骤1: app.module.ts下引入HttpClientModule:  
   ```javascript
   import {HttpClientModule} from '@angular/common/http'  
@@ -120,7 +126,7 @@ this.myEvent.emit(opts)                             //发送参数
    HTTP[传送门](https://angular.cn/tutorial/toh-pt6)
 
  ## <a name="3">路由(Router,ActivatedRoute,canActivate)</a>  
-  路由:  处理url与组件的关系  
+  路由:  处理url与组件的关系   
   - 基本用法    
     ```javascript  
       1.完成一个自定义模块(包含路由配置)的创建和调用
