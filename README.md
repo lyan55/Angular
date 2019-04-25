@@ -27,24 +27,23 @@
   `<any>{{expression}}</any>`  
 - 指令  
 
-  1. 循环 
-  ```javascript
-  <any *ngFor="let tmp of myList"></any>
-  <any *ngFor="let tmp of myList;let myIndex=index"></any>
-  ```  
-  2. 条件--switch  
-  
-  ```javascript  
-  <div [ngSwitch]="expression">
-    <p *ngSwitchCase="情况1"></p>
-    <p *ngSwitchCase="情况2"></p>
-    <p *ngSwitchCase="情况3"></p>
-    <p *ngSwitchDefault></p>
-  </div>
-  ```  
-  2.1 条件--if  
+### 循环指令 
+```javascript
+<any *ngFor="let tmp of myList"></any>
+<any *ngFor="let tmp of myList;let myIndex=index"></any>
+```  
+2. *ngSwitch  
 
-  `<any *ngIf="expression"></any>`  
+```javascript  
+<div [ngSwitch]="expression">
+  <p *ngSwitchCase="情况1"></p>
+  <p *ngSwitchCase="情况2"></p>
+  <p *ngSwitchCase="情况3"></p>
+  <p *ngSwitchDefault></p>
+</div>
+```  
+2. *ngIf  
+`<any *ngIf="expression"></any>`  
   
 - 绑定  
   3.1  属性绑定  
@@ -71,6 +70,51 @@ import {FormsModule} from '@angular/forms'
   4. uppercase/lowercase  
   5. percent  
   6. currency  
+
+实例:  
+```javascript
+<p>{{ 2000 | number }}</p>
+<p>The hero's birthday is {{ birthday | date }}</p>
+<p>{{ 'hellosmile' | uppercase }}</p>
+<p>{{ 'HELLOSMILE' | lowercase }}</p>
+<p>{{ "angular is cool" | slice:1 }}</p>
+```  
+output: 
+```javascript
+2,000
+
+The hero's birthday is May 25, 2019
+
+HELLOSMILE
+
+hellosmile
+
+ngular is cool
+```  
+自定义管道:  
+`ng g pipe pipeName`  
+实例(判断性别):  
+```javascipt
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'sex'
+})
+export class SexPipe implements PipeTransform {
+
+  transform(value: number): any {
+    if(value == 0) {
+      return '你是女孩'
+    }else if(value == 1) {
+      return '你是男孩'
+    }
+  }
+}
+```  
+调用(component.html):  
+`<p>{{ 0 | sex }}</p>`  
+output:  '你是女孩'
+
 - 服务  
 本质: 就是一个类,在里面封装方法,数据  
 作用: 将不同组件要共享的数据和方法抽象出来  
