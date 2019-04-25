@@ -26,14 +26,12 @@
 - 双花括号  
   `<any>{{expression}}</any>`  
 - 指令  
-
-### 循环指令 
+1. *ngFor  
 ```javascript
 <any *ngFor="let tmp of myList"></any>
 <any *ngFor="let tmp of myList;let myIndex=index"></any>
 ```  
 2. *ngSwitch  
-
 ```javascript  
 <div [ngSwitch]="expression">
   <p *ngSwitchCase="情况1"></p>
@@ -45,12 +43,12 @@
 2. *ngIf  
 `<any *ngIf="expression"></any>`  
   
-- 绑定  
-  3.1  属性绑定  
+- 数据绑定  
+  1. 属性绑定  
   `<any [someProp]="expression"><any>`  
-  3.2  事件绑定  
+  3. 2事件绑定  
   `<button (click)="handleClick()"></button>`  
-  3.3  双向数据绑定  
+  3. 3双向数据绑定  
   配置:   
 ```javascript   
 /*src/app/app.module.ts*/
@@ -63,7 +61,7 @@ import {FormsModule} from '@angular/forms'
 `[(ngModel)]="value"`  
 
 - 管道(pipe)  
-### 官方:  
+### 官方管道:  
   1. number  
   2. slice  
   3. json  
