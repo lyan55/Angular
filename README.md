@@ -46,7 +46,7 @@
 
   `<any *ngIf="expression"></any>`  
   
-3.绑定  
+- 绑定  
   3.1  属性绑定  
   `<any [someProp]="expression"><any>`  
   3.2  事件绑定  
