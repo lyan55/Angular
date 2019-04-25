@@ -61,6 +61,8 @@ import {FormsModule} from '@angular/forms'
 `[(ngModel)]="value"`  
 
 - 管道(pipe)  
+what?  
+筛选、过滤、格式化 本质：有参数有返回值的方法.  
 ### 官方管道:  
   1. number  
   2. slice  
@@ -114,16 +116,19 @@ export class SexPipe implements PipeTransform {
 output:  '你是女孩'
 
 - 服务  
-本质: 就是一个类,在里面封装方法,数据  
+what?  
+本质就是一个类,在里面封装方法,数据  
+why?  
 作用: 将不同组件要共享的数据和方法抽象出来  
 创建服务:  
 `ng g service heart-beat`  
 实现服务:  定义需要的数据和方法  
 调用服务:  组件是服务最大消费者  
-```javascript 
+调用(*.component.html):  
+```javascript  
 import { HeartBeatService } from "/path"          //引入服务类
 constructor(private myService: HeartBeatService)  //实例化HeartBeatService类
-this.myService.thods()                            //调用实例类对象的方法
+this.myService.methods()                          //调用实例类对象的方法
 ```
 
  ## <a name="2">通信(Input,Output,EventEmitter)</a>  
