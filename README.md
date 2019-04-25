@@ -63,7 +63,7 @@ import {FormsModule} from '@angular/forms'
 `[(ngModel)]="value"`  
 
 - 管道(pipe)  
-官方:  
+### 官方:  
   1. number  
   2. slice  
   3. json  
@@ -91,7 +91,7 @@ hellosmile
 
 ngular is cool
 ```  
-自定义管道:  
+### 自定义管道:  
 `ng g pipe pipeName`  
 实例(判断性别):  
 ```javascipt
@@ -139,18 +139,24 @@ import {Input} from '@angular/core'     //导入模块
 this.myTitle(.ts)/{{ myTitle }}(.html)  //调用值
 ```  
 
-- 子传父--通过绑定、触发事件传值:  
-事件绑定:   
-html:  
+- 子传父--通过事件传值:  
+### 父组件  
+父组件(*.component.html):  
 `<son (myEvent)="handleEvent($event)"></son>`  
-.ts  
+父组件(*.ts):    
 `handleEvent(opts) {opts}`  
-事件触发:  
+### 子组件  
+子组件(*.component.html):  
+`<button (click)="sendData()">clickMes</button>`  
+子组件(*.ts):  
 ```javascript  
-import {Output,EventEmitter} from '@angular/core'   //导入模块  
-@Output() myEvent = new EventEmitter()              //抛出事件  
-this.myEvent.emit(opts)                             //发送参数  
+import {Output,EventEmitter} from '@angular/core'   //导入模块
+@Output() myEvent = new EventEmitter()              //实例化  
+sendData() {
+  this.myEvent.emit(opts)                           //向父组件发送参数 
+}
 ```  
+
 ### 与远程服务器端的通信或网络通信(HttpClientModule,HttpClient)  
   步骤1: app.module.ts下引入HttpClientModule:  
   ```javascript
