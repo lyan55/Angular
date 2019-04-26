@@ -260,18 +260,36 @@ sendData() {
   - 路由的嵌套  
 
 
-## <a name="4">UI组件库</a> 
-### ionic(移动端)  
-官方文档[传送门](https://ionicframework.com/docs/components)   
-ionic特点如下:  
-
+## <a name="4">ionic</a>  
+概述:  
 1.ionic 基于Angular语法，简单易学。    
 2.ionic 是一个轻量级框架。  
-3.ionic 完美的融合下一代移动框架，支持Angularjs性，MVC   ，代码易维护。  
-4.ionic 提供了漂亮的设计，通过SASS构建应用程序，供了很多   UI 组件来帮助开发者开发强大的应用。  
+3.ionic 完美的融合下一代移动框架，支持Angularjs性，MVC，代码易维护。  
+4.ionic 提供了漂亮的设计，通过SASS构建应用程序，供了很多UI 组件来帮助开发者开发强大的应用。  
 5.ionic 专注原生，让你看不出混合应用和原生的区别  
 6.ionic 提供了强大的命令行工具。  
-7.ionic 性能优越，运行速度快。    
+7.ionic 性能优越，运行速度快。 
+### what?  
+
+onic是一个移动端的ui组件库，主要是给Angular进行使用.  
+ Ionic = angular+ IonicModule(集成了很多的好看的ui组件)+ionIcons + cordova  
+
+### why?  
+
+1. ionic基于angular  
+2. 强大的cli支持  
+3. ionic内置了丰富的移动端的ui组件库,在不同的操作系统运行时会遵循对应的系统风格（android-->MaterialDesign iOS->扁平化）  
+4. 维护了自己的一套图标体系  
+5. ionic提供组件  
+6. ionic提供类  
+7. ionic提供导航工具  
+
+### how?  
+```
+npm i -g ionic      //安装ionic模块
+ionic start myApp   //新建一个项目
+ionic serve         //启动服务
+```  
 
 常用组件如下:  
 1.sheet  
@@ -287,3 +305,5 @@ ionic特点如下:
 11.tabs
 
 
+
+官方文档[传送门](https://ionicframework.com/docs/components)   
