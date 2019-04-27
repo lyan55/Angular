@@ -210,15 +210,16 @@ sendData() {
     `<button routerLink="/path">跳转路由</button>`   
 
 - 传参(ActivatedRoute):   
+### 发送参数  
 
 1. 配置接收方的路由地址  
        `detail --> detail/:id`  
-2. 静态传参  
+2. 静态发送参数  
 ```javascript
 <any routerLink="detail/3"></any>        //标签方式
 this.myRouter.navigateByUrl('detail/3')  //编程方式
 ```
-3. 动态传参  
+3. 动态发送参数  
 ```javascript
 //标签方式
 <any routerLink="/path/{{opts}}"> 路由传参</any>      //推荐大胡子括号
@@ -230,7 +231,7 @@ this.myRouter.navigateByUrl('detail/' + this.params);
 this.myRouter.navigateByUrl(`detail/${this.params}`);
 ```  
 
-4. 接收参数  
+### 接收参数  
 
 ```javascript
   import { ActivatedRoute } from '@angular/router'    //导入ActivatedRoute模块
@@ -321,7 +322,7 @@ ionic start myApp   //新建一个项目
 ionic serve         //启动服务
 ```  
 
-常用组件如下:  
+### 常用UI组件如下:  
 1.sheet  
 2.alert  
 3.button  
@@ -333,6 +334,42 @@ ionic serve         //启动服务
 9.slides  
 10.toast  
 11.tabs
+
+## 路由
+- 配置同上
+- 跳转
+1. 编程式导航
+```
+import {Demo14MainPage} from '***'
+this.navCtrl.push(Demo14MainPage)
+```  
+2. 属性指定  
+```
+import {Demo14MainPage} from '***'
+demo14 = Demo14MainPage
+<any [navPush]="demo14"></any>
+```  
+返回: `this.navCtrl.pop()`  
+
+- 传参
+1. 发送  
+方案1：  
+`this.navCtrl.push(Demo15DetailPage,{id:1})`  
+方案2:  
+`<any [navPush]="detailPage" [navParams]='{id:1}'></any>`  
+2. 接收
+`this.navParams.get('id')`  
+
+### 生命周期
+```
+ionic:
+ionViewDidLoad 初始化（执行一次）
+ionViewWillEnter 初始化（执行很多次）
+ionViewWillUnload 清理工作(执行一次)
+ionViewCanEnter 能不能进来 返回true/false来决定是否能进入
+ionViewCanLeave 能不能离开 返回true/false来决定是否能离开
+```  
+
 
 
 
