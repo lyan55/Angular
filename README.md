@@ -129,9 +129,13 @@ why?
 import { HeartBeatService } from "/path"          //引入服务类
 constructor(private myService: HeartBeatService)  //实例化HeartBeatService类
 this.myService.methods()                          //调用实例类对象的方法
-```
+```  
+- 钩子函数(生命周期)  
+1. ngOnInit()          //在Angular第一次显示数据绑定和设置指令/组件的输入属性之后，初始化指令/组件。
+2. ngOnChanges()       //当Angular（重新）设置数据绑定输入属性时响应。
+3. ngOnDestroy()       //当Angular每次销毁指令/组件之前调用并清扫。（移除事件监听、清除定时器、退订 Observable ）
 
- ## <a name="2">通信(Input,Output,EventEmitter)</a>  
+## <a name="2">通信(Input,Output,EventEmitter)</a>  
 ### 组件间通信 
 - 父传子--通过属性传值:  
 传:  `<son myTitle="123"></son>`  
