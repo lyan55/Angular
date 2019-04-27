@@ -7,7 +7,7 @@
    - <a href="#1">基础语法</a>
    - <a href="#2">通信</a>
    - <a href="#3">路由</a>
-   - <a href="#4">UI组件库</a>
+   - <a href="#4">ionic</a>
    
    
  ## <a name="0">搭建开发环境</a> 
@@ -179,14 +179,13 @@ sendData() {
    HTTP[传送门](https://angular.cn/tutorial/toh-pt6)
 
  ## <a name="3">路由(Router,ActivatedRoute,canActivate)</a>  
-  路由:  处理url与组件的关系   
-  - 基本用法    
+  
+  - 配置    
     ```javascript  
       1.完成一个自定义模块(包含路由配置)的创建和调用
         ng g module my-module --routing
-        app.module.ts/引入/imports
-
-      2.准备一个容器
+        将自定义路由模块(MyModuleRoutingModule)导入到app.module.ts中  
+      2.准备一个容器(父组件或根组件中)
         <router-outlet></router-outlet>
         forChild-->forRoot
       3.创建组件
@@ -194,70 +193,97 @@ sendData() {
           ng g component demo13-login
           ng g component demo13-register
       4.配置路由词典
-          {path:'',component:**}
-          引入组件
-          各自指定url地址
+          {path:'',component:**}    //注意：path没有'/'!!!
       ```  
-  - 跳转与传参  
-    #### 跳转(Router):  
-    编程方式:  
+  - 跳转(Router):  
+  1. 编程方式:  
    ```javascript  
-     import {Router} from '@angular/router'    //引入Router模块
-	 constructor(private myRouter:Router){}    //实例化Router模块
-	 this.myRouter.navigateByUrl("/path")      //调用该类对象navigateByUrl()方法跳转
+  import {Router} from '@angular/router'      //引入Router模块
+  constructor(private myRouter:Router){}      //实例化Router模块
+  this.myRouter.navigateByUrl("/path")        //调用该类对象navigateByUrl()方法跳转
   ```  
-  标签方式:  routerLink  
-    `<button routerLink="/register">注册</button>`   
-  #### 传参(ActivatedRoute):   
-  1.配置接收方的路由地址  
-       `detail --> detail/:id`  
-  2.1  静态传参  
-  ```javascript
-  this.myRouter.navigateByUrl('detail/3')  //编程方式
-  <any routerLink="detail/3"></any>        //标签方式
-  ```
-  2.2  动态传参  
-  ```javascript
-  routerLink="/path/{{opts}}"       //推荐
-  [routerLink]="'/path/'+opts"      //使用绑定属性指令
-  ```
-  3. 接收  
-  ```javascript
-    import {ActivatedRoute} from '@angular/router'    //导入
-    constructor(private myRoute:ActivatedRoute){}     //ActivatedRoute实例化
-    this.myRoute.params.subscribe((result)=>{         //调用类对象属性,方法.回调获取传递过来的参数
-      return result.id       //返回参数id的值,路由地址设置detail/:id 和 接收参数result.id 两个属性名字要保持一致
-    })
-  ```
+  2. 标签方式(routerLink):   
+    `<button routerLink="/path">跳转路由</button>`   
 
-  - 路由守卫(canActivate)
-  主要思路: 判断该页面(比如后台管理页面)是否显示  
-  操作步骤:  
-  1. 创建一个服务类,封装判断处理逻辑方法,数据  
-  `ng g service my-guard`
-  2. 封装判断处理逻辑方法,数据  
-  
-  ```javascript
-  import {CanActivate} from '@angular/router'
-      export class MyGuardService implements CanActivate{
-    canActivate(){
-      //在此来做一些功能处理 来决定是否可以访问你要保护的页面
-      return true/false
-    }
+- 传参(ActivatedRoute):   
+
+1. 配置接收方的路由地址  
+       `detail --> detail/:id`  
+2. 静态传参  
+```javascript
+<any routerLink="detail/3"></any>        //标签方式
+this.myRouter.navigateByUrl('detail/3')  //编程方式
+```
+3. 动态传参  
+```javascript
+//标签方式
+<any routerLink="/path/{{opts}}"> 路由传参</any>      //推荐大胡子括号
+<any [routerLink]="'/path/'+opts">路由传参</any>      //使用绑定属性指令
+
+//编程方式
+let params;
+this.myRouter.navigateByUrl('detail/' + this.params);
+this.myRouter.navigateByUrl(`detail/${this.params}`);
+```  
+
+4. 接收参数  
+
+```javascript
+  import { ActivatedRoute } from '@angular/router'    //导入ActivatedRoute模块
+  constructor(private myRoute:ActivatedRoute){}       //ActivatedRoute实例化
+  this.myRoute.params.subscribe((result)=>{           //异步回调接收参数
+    return result.id                                  //路由地址设置detail/:id和接收参数result.id两个属性名保持一致
+  })
+```  
+
+- 路由的嵌套  
+what?  
+一个spa，A组件需要嵌套B组件、C组件  
+how?  
+1. 给A组件指定一个容器
+`<router-outlet></router-outlet>`   
+2. 给A组件的路由对象，添加一个children   
+```
+{
+  path:'a',
+  component:A,
+  children:[
+    { path:'b',component:B },
+    ...
+  ]
+}
+```  
+调用:  
+`http://localhost:4200/a/b`  
+
+- 路由守卫(canActivate)  
+主要思路: 判断该页面(比如后台管理页面)是否显示  
+操作步骤:  
+1. 创建一个服务类,封装判断处理逻辑方法,数据  
+`ng g service my-guard`  
+2. 封装判断处理逻辑方法,数据  
+
+```javascript
+import {CanActivate} from '@angular/router'
+    export class MyGuardService implements CanActivate{
+  canActivate(){
+    //在此来做一些功能处理 来决定是否可以访问你要保护的页面
+    return true/false
   }
-  ```  
-  3. 配置路由地址页面(my-module.ts)--皮卡丘,去守卫你保护的页面吧  
-  ```javascript  
-      import {MyGuardService} from '../my-guard.service'
-     [
-        {
-          path:'admin',
-          component:AdminComponent,
-          canActivate:[MyGuardService]
-        }
-     ]
-  ```   
-  - 路由的嵌套  
+}
+```  
+3. 配置路由地址页面(my-module.ts)--皮卡丘,去守卫你保护的页面吧  
+```javascript  
+    import {MyGuardService} from '../my-guard.service'
+    [
+      {
+        path:'admin',
+        component:AdminComponent,
+        canActivate:[MyGuardService]
+      }
+    ]
+```   
+
 
 
 ## <a name="4">ionic</a>  
