@@ -9,7 +9,6 @@
 - [Server](#Server)
 - [Forms](#Forms)  
 - [Router](#Router)
-- [Ionic](#Ionic)
    
 ## Overview 
 - What?  
@@ -197,6 +196,8 @@
 ## Forms  
 - 响应式表单: 更健壮,它们的可扩展性、可复用性和可测试性更强。 如果表单是应用中的关键部分，或者你已经准备使用响应式编程模式来构建应用，请使用响应式表单。  
 - 模板驱动表单: 在往应用中添加简单的表单时非常有用，比如邮件列表的登记表单。它们很容易添加到应用中，但是不像响应式表单那么容易扩展。如果你有非常基本的表单需求和简单到能用模板管理的逻辑，请使用模板驱动表单。  
+- 两者的差异  
+  <img src="./images/formTypeDifference.png">  
 ## Router  
 - 配置    
   - 1.创建自定义路由模块  
@@ -297,78 +298,4 @@
             }
           ]
       ```   
-Angular文档[传送门](https://angular.cn/docs)
-
-## Ionic 
-- 概述:  
-  - 1.Ionic 基于Angular语法，简单易学。    
-  - 2.Ionic 是一个轻量级框架。  
-  - 3.Ionic 完美的融合下一代移动框架，支持Angularjs性，MVC，代码易维护。  
-  - 4.Ionic 提供了漂亮的设计，通过SASS构建应用程序，供了很多UI 组件来帮助开发者开发强大 - 的应用。  
-  - 5.Ionic 专注原生，让你看不出混合应用和原生的区别  
-  - 6.Ionic 提供了强大的命令行工具。  
-  - 7.Ionic 性能优越，运行速度快。 
-- what?  
-  onic是一个移动端的ui组件库，主要是给Angular进行使用.  
-  Ionic = angular+ IonicModule(集成了很多的好看的ui组件)+Ionicons + cordova   
-- why?  
-  - 1.Ionic基于angular  
-  - 2.强大的cli支持  
-  - 3.Ionic内置了丰富的移动端的ui组件库,在不同的操作系统运行时会遵循对应的系统风格（android-->MaterialDesign iOS->扁平化）  
-  - 4.维护了自己的一套图标体系  
-  - 5.Ionic提供组件  
-  - 6.Ionic提供类  
-  - 7.Ionic提供导航工具  
-
-- how?  
-  ```
-  npm i -g Ionic      //安装Ionic模块
-  Ionic start myApp   //新建一个项目
-  Ionic serve         //启动服务
-  ```  
-
-- 常用UI组件如下:  
-  - 1.sheet  
-  - 2.alert  
-  - 3.button  
-  - 4.card  
-  - 5.content  
-  - 6.grid  
-  - 7.infinite scroll  
-  - 8.input  
-  - 9.slides  
-  - 10.toast  
-  - 11.tabs
-
-## 路由
-- 配置同上
-- 跳转
-  - 1.编程式跳转
-    ```
-    import {Demo14MainPage} from '***'
-    this.navCtrl.push(Demo14MainPage)
-    ```  
-  - 2.属性指定  
-    ```
-    import {Demo14MainPage} from '***'
-    demo14 = Demo14MainPage
-    <any [navPush]="demo14"></any>
-    ```  
-    返回: `this.navCtrl.pop()`  
-
-- 传参
-  - 1.发送  
-    - 方案1: `this.navCtrl.push(Demo15DetailPage,{id:1})`  
-    - 方案2: `<any [navPush]="detailPage" [navParams]='{id:1}'></any>`  
-  - 2.接收  
-    `this.navParams.get('id')`  
-
-- 生命周期  
-  - Ionic:
-  - ionViewDidLoad 初始化（执行一次）
-  - ionViewWillEnter 初始化（执行很多次）
-  - ionViewWillUnload 清理工作(执行一次)
-  - ionViewCanEnter 能不能进来 返回true/false来决定是否能进入
-  - ionViewCanLeave 能不能离开 返回true/false来决定是否能离开
-
-Ionic官方文档[传送门](https://ionicframework.com/docs/components)   
+Angular文档[传送门](https://angular.cn/docs) 
