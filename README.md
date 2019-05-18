@@ -34,6 +34,10 @@
     `ng new my-app`  
   - 启动服务器    
     `ng serve --open`  
+- 钩子函数(生命周期)  
+  - 1.ngOnInit()          //在Angular第一次显示数据绑定和设置指令/组件的输入属性之后，初始化指令/组件。
+  - 2.ngOnChanges()       //当Angular（重新）设置数据绑定输入属性时响应。
+  - 3.ngOnDestroy()       //当Angular每次销毁指令/组件之前调用并清扫。（移除事件监听、清除定时器、退订 Observable ）
 ## TemplateGrammar  
 - 组件的创建  
   `ng g component demo01`  
@@ -188,11 +192,6 @@
     constructor(private myService: HeartBeatService)  //实例化HeartBeatService类
     this.myService.methods()                          //调用实例类对象的方法
     ```  
-- 钩子函数(生命周期)  
-  - 1.ngOnInit()          //在Angular第一次显示数据绑定和设置指令/组件的输入属性之后，初始化指令/组件。
-  - 2.ngOnChanges()       //当Angular（重新）设置数据绑定输入属性时响应。
-  - 3.ngOnDestroy()       //当Angular每次销毁指令/组件之前调用并清扫。（移除事件监听、清除定时器、退订 Observable ）
-
 ## Forms  
 - 响应式表单: 更健壮,它们的可扩展性、可复用性和可测试性更强。 如果表单是应用中的关键部分，或者你已经准备使用响应式编程模式来构建应用，请使用响应式表单。  
 - 模板驱动表单: 在往应用中添加简单的表单时非常有用，比如邮件列表的登记表单。它们很容易添加到应用中，但是不像响应式表单那么容易扩展。如果你有非常基本的表单需求和简单到能用模板管理的逻辑，请使用模板驱动表单。  
@@ -201,7 +200,7 @@
 ## Router  
 - 配置    
   - 1.创建自定义路由模块  
-      `ng g module my-module --routing`  
+      `ng g module my-module --routing`   //记得注册到app.module.ts根模块 
   - 2.准备一个容器(父组件或根组件中)  
       `<router-outlet></router-outlet>`  
       `forChild-->forRoot`  
