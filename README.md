@@ -197,6 +197,68 @@
 - 模板驱动表单: 在往应用中添加简单的表单时非常有用，比如邮件列表的登记表单。它们很容易添加到应用中，但是不像响应式表单那么容易扩展。如果你有非常基本的表单需求和简单到能用模板管理的逻辑，请使用模板驱动表单。  
 - 两者的差异  
   <img src="./images/formTypeDifference.png">  
+
+- 创建最简单的输入框  
+  `<input type="text" [(ngModel)]="username">{{username}}`  
+- 添加简单的验证功能  
+  - required - 设置表单控件值是非空的
+  - email - 设置表单控件值的格式是 email
+  - minlength - 设置表单控件值的最小长度
+  - maxlength - 设置表单控件值的最大长度
+  - pattern - 设置表单控件的值需匹配 pattern 对应的模式  
+  - 检查是否通过验证  
+      通过`#userName="ngModel"`方式获取 ngModel 对象，然后通过`userName.valid`判断表单控件是否通过验证(返回true/false).  
+      ```javascript
+        <input 
+          type="text" 
+          required
+          [(ngModel)]="username"
+          #userName="ngModel">
+        {{userName.valid}}
+      ```  
+- 显示验证失败的错误信息  
+  通过`#userName="ngModel"`方式获取ngModel对象，然后通过该对象的errors属性，来获取对应验证规则 (如 required, minlength 等) 的验证状态。  
+  ```
+    <input 
+    type="text" 
+    required
+    minlength="3"
+    [(ngModel)]="username"
+    #userName="ngModel">
+    <div *ngIf="userName.errors?.required">请您输入用户名</div>
+    <div *ngIf="userName.errors?.minlength">
+      用户名的长度必须大于 {{userName.errors?.minlength.requiredLength}}，当前的长度为
+        {{userName.errors?.minlength.actualLength}}
+    </div>
+  ```  
+- 创建表单  
+  - `<form>`创建表单  
+    ```javascript  
+    <form>
+      <input 
+      type="text" 
+      required
+      minlength="3"
+      name="username"
+      [(ngModel)]="username"
+      #userName="ngModel">
+      <div *ngIf="userName.errors?.required">请您输入用户名</div>
+      <div *ngIf="userName.errors?.minlength">
+        用户名的长度必须大于 {{userName.errors?.minlength.requiredLength}}，当前的长度为
+          {{userName.errors?.minlength.actualLength}}
+      </div>
+      <button type="submit">提交</button>
+    </form>
+    ```  
+  - 获取表单提交的值  
+    通过`#loginForm="ngForm"`方式获取 ngForm 对象，然后通过`loginForm.value`来获取表单的值(loginForm.value | json)。 
+- ngModelGroup    
+  一个指令,语义化对表单内容分组.  
+- 表单添加验证状态样式  
+- 表单控件的状态  
+- 使用单选控件  
+- 使用多选控件  
+
 ## Router  
 - 配置    
   - 1.创建自定义路由模块  
