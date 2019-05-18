@@ -201,7 +201,7 @@
 - 配置    
   - 1.创建自定义路由模块  
       `ng g module my-module --routing`   //记得注册到app.module.ts根模块 
-  - 2.准备一个容器(父组件或根组件中)  
+  - 2.准备一个容器(父组件或根组件中*.component.html)  
       `<router-outlet></router-outlet>`  
       `forChild-->forRoot`  
   - 3.创建组件  
@@ -210,7 +210,7 @@
         ng g component demo13-login
         ng g component demo13-register
       ```  
-  - 4.配置路由词典  
+  - 4.配置路由词典(my-module-routing.module.ts)  
       `{path:'',component:**}    //注意：path没有'/'!!!`  
 - 跳转(Router):  
   - 1.编程跳转:  
@@ -241,7 +241,6 @@
       this.myRouter.navigateByUrl('detail/' + this.params);
       this.myRouter.navigateByUrl(`detail/${this.params}`);
       ```  
-
   - 接收参数  
 
     ```javascript
@@ -253,11 +252,11 @@
     ```  
 - 路由的嵌套  
   - what?   
-      一个spa，A组件需要嵌套B组件、C组件  
+      一个spa，父组件A需要嵌套子组件B、C    
   - how?    
-    - 1.给A组件指定一个容器
+    - 1.给父组件A指定一个容器(顶级渲染出口)
       `<router-outlet></router-outlet>`   
-    - 2.给A组件的路由对象，添加一个children    
+    - 2.给父组件A的路由对象，添加一个children子路由对象      
       ```
       {
         path:'a',
