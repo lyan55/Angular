@@ -251,14 +251,113 @@
     </form>
     ```  
   - 获取表单提交的值  
-    通过`#loginForm="ngForm"`方式获取 ngForm 对象，然后通过`loginForm.value`来获取表单的值(loginForm.value | json)。 
+    通过`#loginForm="ngForm"`方式获取 ngForm 对象，然后通过`loginForm.value`来获取表单的值。 
+    ```javascript
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+      <input 
+      type="text" 
+      required
+      minlength="3"
+      name="username"
+      [(ngModel)]="username"
+      #userName="ngModel">
+      <hr>
+      <div *ngIf="userName.errors?.required">请您输入用户名</div>
+      <div *ngIf="userName.errors?.minlength">
+        用户名的长度必须大于 {{userName.errors?.minlength.requiredLength}}，当前的长度为
+          {{userName.errors?.minlength.actualLength}}
+      </div>
+      <button type="submit">提交</button>
+      {{loginForm.value | json}}
+    </form>
+  ```  
 - ngModelGroup    
-  一个指令,语义化对表单内容分组.  
+  一个指令,语义化对表单内容分组.    
+  结合`<fieldset ngModelGroup="user">`  
+  ```javascript
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+   <fieldset ngModelGroup="user">
+    <input 
+     type="text" 
+     required
+     minlength="3"
+     name="username"
+     [(ngModel)]="username"
+     #userName="ngModel">
+    <hr>
+    <div *ngIf="userName.errors?.required">请您输入用户名</div>
+    <div *ngIf="userName.errors?.minlength">
+      用户名的长度必须大于 {{userName.errors?.minlength.requiredLength}}，当前的长度为
+        {{userName.errors?.minlength.actualLength}}
+    </div>
+    <input type="password" ngModel name="password">
+   </fieldset>
+    <button type="submit">提交</button>
+    <hr>
+    {{loginForm.value | json}}
+  </form>
+  ```  
 - 表单添加验证状态样式  
+  若验证通过则会在表单控件上添加`ng-valid`类，若验证失败则会在表单控件上添加`ng-invalid`类.   
+  ```
+  styles: [`
+    input.ng-invalid {
+      border: 3px solid red;
+    }
+    input.ng-valid {
+        border: 3px solid green;
+    }
+  `]
+  ```  
 - 表单控件的状态  
+  通过`#userName="ngModel"`方式获取`ngModel`对象进行访问控件状态.  
+  - valid - 表单控件有效
+  - invalid - 表单控件无效
+  - pristine - 表单控件值未改变
+  - dirty - 表单控件值已改变
+  - touched - 表单控件已被访问过
+  - untouched - 表单控件未被访问过  
 - 使用单选控件  
+  `<input name="***" type="radio">`方式添加单选控件。  
+  ```javascript
+    <form #loginForm="ngForm">
+    Angular版本：
+    <div *ngFor="let version of versions;">
+        <input 
+          [attr.id]="version"
+           name="version"
+           ngModel
+           required
+           [value]="version"
+            type="radio">
+         <label [attr.for]="version">{{version}}</label>
+      </div>
+    {{loginForm.value | json}}
+  </form>
+  ```  
 - 使用多选控件  
-
+  `<select name="***">`方式添加多选控件。  
+  ```javascript
+    <form #loginForm="ngForm">
+    Angular版本：
+    <select name="version" [ngModel]="versions[0]">
+        <option
+         *ngFor="let version of versions;"
+          [value]="version">
+            {{version}}
+        </option>
+      </select>
+    <hr>
+    {{loginForm.value | json}}
+  </form>
+  ```  
+  - 验证  
+  ```javascript
+  styles: [`
+    select.ng-invalid + label:after {
+        content: '<-- 请选择版本!'
+  }`]
+  ```  
 ## Router  
 - 配置    
   - 1.创建自定义路由模块  
